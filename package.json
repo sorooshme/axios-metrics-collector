@@ -11,7 +11,7 @@
   "author": "Soroosh Merajian",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sorooshme/axios-metrics-collector.git"
+    "url": "git+https://github.com/sorooshme/axios-metrics-collector.git"
   },
   "keywords": [
     "axios",
@@ -19,6 +19,9 @@
     "latency",
     "prometheus"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "files": [
     "/build"
