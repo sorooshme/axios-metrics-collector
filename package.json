@@ -1,6 +1,7 @@
 {
   "name": "@sorooshme/axios-metrics-collector",
   "version": "0.0.0-dev",
+  "type": "module",
   "description": "Axios Metrics Collector",
   "main": "build/index.js",
   "scripts": {
