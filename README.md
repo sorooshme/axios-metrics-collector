@@ -17,6 +17,8 @@ const client = axios.create();
 new AxiosMetricsCollector(client, (metrics) => {
   console.log("my metrics", metrics);
 });
+
+await client.get("https://example.org");
 ```
 
 ## Collected Metrics
@@ -30,10 +32,11 @@ interface CollectedMetrics {
   baseUrl?: string;
   status?: number;
   latency?: number; // in miliseconds
+  labels?: MetricLabels; // custom labels passed by you
 }
 ```
 
-### Use Case - Prometheus
+### Use Case - Prometheus with labels
 
 The collector `handler` can be used to store the metrics in Prometheus.
 
@@ -41,9 +44,17 @@ The collector `handler` can be used to store the metrics in Prometheus.
 const histogram = new Histogram();
 
 new AxiosMetricsCollector(client, (metrics) => {
-  histogram.observe(metrics.latency); // add labels as needed
+  histogram.observe(metrics.labels, metrics.latency);
+});
+
+await client.get("https://example.org", {
+  metricLabels: {
+    customLabel: "custom-value",
+  },
 });
 ```
+
+A full example can be found [here](/example/1-prometheus-with-labels/index.ts).
 
 ## Feedback
 

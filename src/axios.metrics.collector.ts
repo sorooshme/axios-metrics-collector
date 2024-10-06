@@ -56,6 +56,7 @@ export class AxiosMetricsCollector {
       baseUrl: timedRequestConfig.baseURL,
       status: response.status,
       latency: latencyMs,
+      labels: timedRequestConfig.metricLabels,
     };
 
     this.collectedMetricsHandler(metrics);
